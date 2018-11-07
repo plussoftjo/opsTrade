@@ -26,9 +26,9 @@ Route::post('/user/update','API\APP\userController@update');
 //////// Frind ship
 ////////
 
-Route::get('/frindship/add/{req_to}','API\App\frindshipController@add');
-Route::get('/frindship/accept_friend/{req_from}','API\App\frindshipController@accept_friend');
-Route::get('/frindship/checkState/{req_to}','API\App\frindshipController@checkState');
+Route::get('/frindship/add/{req_to}','API\APP\frindshipController@add');
+Route::get('/frindship/accept_friend/{req_from}','API\APP\frindshipController@accept_friend');
+Route::get('/frindship/checkState/{req_to}','API\APP\frindshipController@checkState');
 Route::get('/frindship/has_frind_req', 'API\APP\notfyController@has_frind_req');
 
 
@@ -104,3 +104,33 @@ Route::get('/message/checkState','API\APP\messageController@checkState');
 
 
 });
+
+
+
+
+
+
+////////////////////
+/// ADMIN PANEL CONTROLLER
+////////////
+///////// USER
+Route::get('/admin/user/index','API\ADMIN\userController@index');
+Route::get('/admin/user/show/{id}','API\ADMIN\userController@show');
+Route::get('/admin/user/posts/{id}','API\ADMIN\userController@posts');
+Route::post('/admin/user/name','API\ADMIN\searchController@searchUser_byName');
+Route::post('/admin/user/country','API\ADMIN\searchController@searchUser_byCountry');
+Route::post('/admin/user/catg','API\ADMIN\searchController@searchUser_byCatg');
+/// post 
+route::get('/admin/post/destroy/{id}','API\ADMIN\postController@destory');
+Route::post('/admin/post/name','API\ADMIN\searchController@searchPost_byName');
+Route::post('/admin/post/country','API\ADMIN\searchController@searchPost_byCountry');
+Route::post('/admin/post/catg','API\ADMIN\searchController@searchPost_byCatg');
+//get Catg
+Route::get('/admin/catg/get','API\ADMIN\searchController@getCatg');
+Route::get('/admin/post/show/{id}','API\ADMIN\postController@show');
+
+
+///////// faker
+Route::post('/admin/faker/user','API\ADMIN\fakerController@store');
+Route::post('/admin/faker/post','API\ADMIN\fakerController@postStore');
+Route::get('/admin/faker/getUser','API\ADMIN\fakerController@getFakerUser');

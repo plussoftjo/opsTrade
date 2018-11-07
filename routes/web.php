@@ -113,3 +113,7 @@ Route::get('/testRandomeUser',function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::get('/admin','API\ADMIN\layoutController@index');
