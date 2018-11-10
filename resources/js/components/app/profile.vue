@@ -31,34 +31,49 @@
 						<div class="card-title">
 							About: {{user.profile.about}}
 						</div>
+						<div class="card-title">
+							Catg : {{user.profile.catg}}
+						</div>
+						<div class="sendMessage">
+							<button class="btn white--text text-white white-text btn-info "
+							@click="$router.push({name:'message',params:{id:$route.params.id}})">
+								Send Message
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="card">
-			<div class="card text-white bg-secondary mb-3" v-for="(post,index) in posts">
-				<div class="card-title">
-					<div>
-						Post ID : {{post.id}} 
+		<div class="card pd-2" style="padding-top: 10px;">
+				<div class="container">
+					<div class="card">
+						<div class="card text-white bg-secondary mb-3" v-for="(post,index) in posts">
+							<div class="card-title">
+								<div>
+									Post ID : {{post.id}} 
+								</div>
+								<div>
+									Created_at : {{post.created_at}}
+								</div>
+								<div class="deleteBtn">
+									<button type="button" class="btn btn-danger" @click="destroy(post.id)">Delete</button>
+								</div>
+							</div>
+							<div class="card-body " @click="$router.push({name:'post',params:{id:post.id}})">
+								{{post.content}}
+							</div>
+							<div class="row">
+								<div class="col-md-3" v-for="(image,index) in post.images">
+									<img class="card-img-top" :src="'images/posts/' +  image.image " width="100" height="100" alt="Card image cap">
+								</div>
+							</div>
+							
+						</div>
 					</div>
-					<div>
-						Created_at : {{post.created_at}}
-					</div>
-					<div class="deleteBtn">
-						<button type="button" class="btn btn-danger" @click="destroy(post.id)">Delete</button>
-					</div>
-				</div>
-				<div class="card-body ">
-					{{post.content}}
-				</div>
-				<div class="row">
-					<div class="col-md-3" v-for="(image,index) in post.images">
-						<img class="card-img-top" :src="'images/posts/' +  image.image " width="100" height="100" alt="Card image cap">
-					</div>
-				</div>
-				
-			</div>
 		</div>
+		</div>
+	
+
 	</div>
 </template>
 <script>
@@ -106,4 +121,5 @@
 <style>
 	.d-flex img{display: inline-block;}
 	.deleteBtn{position: absolute; top:0px; right: 0px;}
+	.sendMessage{position: absolute; right: 30px; bottom: 30px;}
 </style>

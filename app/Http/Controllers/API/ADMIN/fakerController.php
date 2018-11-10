@@ -8,6 +8,8 @@ use App\User;
 use App\profile;
 use Faker\Generator as Faker;
 use App\post;
+use App\postimage;
+
 class fakerController extends Controller
 {
     public function store(Faker $faker,Request $req) 
@@ -37,11 +39,19 @@ class fakerController extends Controller
     public function postStore(Faker $faker,Request $req)
     {
         $catg = profile::where('user_id',$req->user)->value('catg');
+
         $post = post::create([
             'user_id' => $req->user,
             'content' => $req->post,
             'catg' => $catg
         ]);
+
+            foreach ($req->images as $k) {
+            postimage::create([
+                'post_id' => $post->id,
+                'image' => $k
+            ]);
+        }
     }
 
     public function getFakerUser() 

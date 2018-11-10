@@ -6,18 +6,18 @@
 		  <thead class="thead-dark">
 		    <tr>
 		      <th scope="col">#</th>
-		      <th scope="col">Name</th>
-		      <th scope="col">Email</th>
-		      <th scope="col">Phone</th>
+		      <th scope="col">post</th>
+		      <th scope="col">catg</th>
+		      <th scope="col">User</th>
 		      <th scope="col">created at</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr v-for="(d,index) in data" @click="$router.push({name:'Profile',params:{id:d.id}})">
+		    <tr v-for="(d,index) in data" @click="$router.push({name:'post',params:{id:d.id}})">
 		      <th scope="row">{{d.id}}</th>
-		      <td>{{d.name}}</td>
-		      <td>{{d.email}}</td>
-		      <td>{{d.phone}}</td>
+		      <td>{{d.content}}</td>
+		      <td>{{d.catg}}</td>
+		      <td>{{d.user.name}}</td>
 		      <td>{{d.created_at}}</td>
 		    </tr>
 		  </tbody>
@@ -51,7 +51,7 @@
 		methods:{
 			install() {
 				const vm = this;
-				axios.get('/api/admin/user/index?page=' + vm.page).then(response => {
+				axios.get('/api/admin/post/index?page=' + vm.page).then(response => {
 					// Last Page Make 
 					vm.last_page = response.data.last_page;
 
@@ -77,7 +77,7 @@
 			prev() {
 				const vm = this;
 				vm.page = vm.page - 2;
-				axios.get('/api/admin/user/index?page=' + vm.page).then(response => {
+				axios.get('/api/admin/post/index?page=' + vm.page).then(response => {
 					// Last Page Make 
 					vm.last_page = response.data.last_page;
 

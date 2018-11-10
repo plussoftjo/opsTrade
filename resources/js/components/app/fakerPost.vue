@@ -16,6 +16,16 @@
 				</div>
 			</div>
 			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-3" v-for="i in post.images">
+						<img :src="'/images/posts/' + i" width="auto" height="150px" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				 <input type="file" v-on:change="onFileChange" class="form-control">
+			</div>
+			<div class="col-md-12">
 				<button class="btn btn-success btn-block" @click="store">Store</button>
 			</div>
 		</div>
@@ -25,8 +35,9 @@
 	export default {
 		data() {
 			return {
-				post:{user:'',post:''},
-				users:[]
+				post:{user:'',post:'',images:[]},
+				users:[],
+				image:'',
 			}
 		},
 		methods:{
@@ -45,7 +56,30 @@
 				}).catch(err => {
 					console.log(err);
 				});
-			}
+			},
+			onFileChange(e) {
+		        let files = e.target.files || e.dataTransfer.files;
+		         if (!files.length)
+		            return;
+		        this.createImage(files[0]);
+		      },
+		      createImage(file) {
+		         let reader = new FileReader();
+		          let vm = this;
+		          reader.onload = (e) => {
+		              vm.image = e.target.result;
+		              vm.upload();
+		          };
+		          reader.readAsDataURL(file);
+		      },
+		      upload() {
+		      	const vm = this;
+		      	axios.post('api/admin/post/uploadImage',{image:vm.image}).then(response =>{
+		      		vm.post.images.push(response.data.image);
+		      	}).catch(err => {
+		      		console.log(err)
+		      	});
+		      },
 		},
 		created() {
 			const vm = this;

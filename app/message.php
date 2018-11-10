@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class message extends Model
 {
 
+	public $with = ['user'];
+
    protected $fillable = [
         'is_seen','user_id'
     ];

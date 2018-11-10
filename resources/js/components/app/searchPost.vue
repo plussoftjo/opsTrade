@@ -60,7 +60,7 @@
 		<!-- Serch Section End -->
 		
 		<!-- USER TABLE TO GET  -->
-		<table class="table">
+		<table class="table table-bordered">
 		  <thead class="thead-dark">
 		    <tr>
 		      <th scope="col">#</th>
@@ -178,6 +178,7 @@
 			},
 			installCountry() {
 				const vm = this;
+
 
  const country = [ 
   {text: 'Afghanistan', code: 'AF'}, 
@@ -322,7 +323,7 @@
   {text: 'Mauritius', code: 'MU'}, 
   {text: 'Mayotte', code: 'YT'}, 
   {text: 'Mexico', code: 'MX'}, 
-  {text: 'Micronesia, Federated States of', code: 'FM'}, 
+  {text: 'Micronesia', code: 'FM'}, 
   {text: 'Moldova, Republic of', code: 'MD'}, 
   {text: 'Monaco', code: 'MC'}, 
   {text: 'Mongolia', code: 'MN'}, 
@@ -347,7 +348,7 @@
   {text: 'Oman', code: 'OM'}, 
   {text: 'Pakistan', code: 'PK'}, 
   {text: 'Palau', code: 'PW'}, 
-  {text: 'Palestinian Territory, Occupied', code: 'PS'}, 
+  {text: 'Palestine', code: 'PS'}, 
   {text: 'Panama', code: 'PA'}, 
   {text: 'Papua New Guinea', code: 'PG'}, 
   {text: 'Paraguay', code: 'PY'}, 
@@ -365,14 +366,14 @@
   {text: 'Saint Helena', code: 'SH'}, 
   {text: 'Saint Kitts and Nevis', code: 'KN'}, 
   {text: 'Saint Lucia', code: 'LC'}, 
-  {text: 'Saint Pierre and Miquelon', code: 'PM'}, 
-  {text: 'Saint Vincent and the Grenadines', code: 'VC'}, 
+  {text: 'Saint n', code: 'PM'}, 
+  {text: 'Saint ', code: 'VC'}, 
   {text: 'Samoa', code: 'WS'}, 
   {text: 'San Marino', code: 'SM'}, 
   {text: 'Sao Tome and Principe', code: 'ST'}, 
   {text: 'Saudi Arabia', code: 'SA'}, 
   {text: 'Senegal', code: 'SN'}, 
-  {text: 'Serbia and Montenegro', code: 'CS'}, 
+  {text: 'Serbia', code: 'CS'}, 
   {text: 'Seychelles', code: 'SC'}, 
   {text: 'Sierra Leone', code: 'SL'}, 
   {text: 'Singapore', code: 'SG'}, 
@@ -381,7 +382,7 @@
   {text: 'Solomon Islands', code: 'SB'}, 
   {text: 'Somalia', code: 'SO'}, 
   {text: 'South Africa', code: 'ZA'}, 
-  {text: 'South Georgia and the South Sandwich Islands', code: 'GS'}, 
+  {text: 'South Georgia', code: 'GS'}, 
   {text: 'Spain', code: 'ES'}, 
   {text: 'Sri Lanka', code: 'LK'}, 
   {text: 'Sudan', code: 'SD'}, 
@@ -390,10 +391,10 @@
   {text: 'Swaziland', code: 'SZ'}, 
   {text: 'Sweden', code: 'SE'}, 
   {text: 'Switzerland', code: 'CH'}, 
-  {text: 'Syrian Arab Republic', code: 'SY'}, 
+  {text: 'Syria', code: 'SY'}, 
   {text: 'Taiwan, Province of China', code: 'TW'}, 
   {text: 'Tajikistan', code: 'TJ'}, 
-  {text: 'Tanzania, United Republic of', code: 'TZ'}, 
+  {text: 'Tanzania,', code: 'TZ'}, 
   {text: 'Thailand', code: 'TH'}, 
   {text: 'Timor-Leste', code: 'TL'}, 
   {text: 'Togo', code: 'TG'}, 
@@ -403,14 +404,14 @@
   {text: 'Tunisia', code: 'TN'}, 
   {text: 'Turkey', code: 'TR'}, 
   {text: 'Turkmenistan', code: 'TM'}, 
-  {text: 'Turks and Caicos Islands', code: 'TC'}, 
+  {text: 'Turks ', code: 'TC'}, 
   {text: 'Tuvalu', code: 'TV'}, 
   {text: 'Uganda', code: 'UG'}, 
   {text: 'Ukraine', code: 'UA'}, 
   {text: 'United Arab Emirates', code: 'AE'}, 
   {text: 'United Kingdom', code: 'GB'}, 
   {text: 'United States', code: 'US'}, 
-  {text: 'United States Minor Outlying Islands', code: 'UM'}, 
+  {text: 'United States Minor', code: 'UM'}, 
   {text: 'Uruguay', code: 'UY'}, 
   {text: 'Uzbekistan', code: 'UZ'}, 
   {text: 'Vanuatu', code: 'VU'}, 

@@ -1,11 +1,15 @@
 import dashboard from './components/app/dashboard.vue'
 import Users from './components/app/Users.vue'
+import posts from './components/app/posts.vue'
 import profile from './components/app/profile';
 import searchUser from './components/app/searchUser'
 import searchPost from './components/app/searchPost'
 import post from './components/app/post'
 import fakerUser from './components/app/fakerUser'
 import fakerPost from './components/app/fakerPost'
+import messages from './components/app/messages'
+import getMessage from './components/app/getMessage'
+import message from './components/app/message'
 
 export const routes = [
 	{
@@ -47,5 +51,25 @@ export const routes = [
 		path:'/faker/post',
 		name:'fakerPost',
 		component:fakerPost
+	},
+	{
+		path:'/posts',
+		name:'posts',
+		component:posts
+	},
+	{
+		path:'/messages',
+		name:"newMessage",
+		component:messages
+	},
+	{
+		path:'/getMessage',
+		name:'messages',
+		component:getMessage
+	},
+	{
+		path:'/message/:id',
+		name:'message',
+		component:message
 	}
 ]

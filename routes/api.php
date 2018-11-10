@@ -116,6 +116,7 @@ Route::get('/message/checkState','API\APP\messageController@checkState');
 ////////////
 ///////// USER
 Route::get('/admin/user/index','API\ADMIN\userController@index');
+Route::get('/admin/user/all','API\ADMIN\userController@all');
 Route::get('/admin/user/show/{id}','API\ADMIN\userController@show');
 Route::get('/admin/user/posts/{id}','API\ADMIN\userController@posts');
 Route::post('/admin/user/name','API\ADMIN\searchController@searchUser_byName');
@@ -135,3 +136,17 @@ Route::get('/admin/post/show/{id}','API\ADMIN\postController@show');
 Route::post('/admin/faker/user','API\ADMIN\fakerController@store');
 Route::post('/admin/faker/post','API\ADMIN\fakerController@postStore');
 Route::get('/admin/faker/getUser','API\ADMIN\fakerController@getFakerUser');
+
+Route::get('/admin/dashboard','API\ADMIN\userController@dashboard');
+
+Route::get('/admin/post/index','API\ADMIN\postController@index');
+
+
+Route::post('/admin/message/store','API\ADMIN\messageController@publicMessage');
+Route::get('/admin/message/index','API\ADMIN\messageController@index');
+
+Route::get('/admin/message/show/{id}','API\ADMIN\messageController@show');
+
+Route::post('/admin/message/store/{id}','API\ADMIN\messageController@store');
+
+Route::post('/admin/post/uploadImage','API\ADMIN\postController@uploadImage');

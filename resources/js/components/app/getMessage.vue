@@ -5,20 +5,14 @@
 		<table class="table table-bordered">
 		  <thead class="thead-dark">
 		    <tr>
-		      <th scope="col">#</th>
-		      <th scope="col">Name</th>
-		      <th scope="col">Email</th>
-		      <th scope="col">Phone</th>
-		      <th scope="col">created at</th>
+		      <th scope="col">name</th>
+		      <th scope="col">lastMessage</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr v-for="(d,index) in data" @click="$router.push({name:'Profile',params:{id:d.id}})">
-		      <th scope="row">{{d.id}}</th>
-		      <td>{{d.name}}</td>
-		      <td>{{d.email}}</td>
-		      <td>{{d.phone}}</td>
-		      <td>{{d.created_at}}</td>
+		    <tr v-for="(d,index) in data" @click="$router.push({name:'message',params:{id:d.user.id}})" class="table-success">
+		      <td>{{d.user.name}}</td>
+		      <td>{{d.updated_at}}</td>
 		    </tr>
 		  </tbody>
 		</table>
@@ -51,7 +45,7 @@
 		methods:{
 			install() {
 				const vm = this;
-				axios.get('/api/admin/user/index?page=' + vm.page).then(response => {
+				axios.get('/api/admin/message/index?page=' + vm.page).then(response => {
 					// Last Page Make 
 					vm.last_page = response.data.last_page;
 
@@ -77,7 +71,7 @@
 			prev() {
 				const vm = this;
 				vm.page = vm.page - 2;
-				axios.get('/api/admin/user/index?page=' + vm.page).then(response => {
+				axios.get('/api/admin/message/index?page=' + vm.page).then(response => {
 					// Last Page Make 
 					vm.last_page = response.data.last_page;
 
