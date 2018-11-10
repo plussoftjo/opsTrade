@@ -15,6 +15,15 @@
 			<div class="card-body">
 				{{post.content}}
 			</div>
+			<div class="images">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-4" v-for="i in post.images">
+							<img :src="'/images/posts/' + i.image" class="img-fluid" height="300px" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="card">

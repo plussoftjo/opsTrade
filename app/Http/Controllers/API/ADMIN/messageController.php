@@ -54,7 +54,7 @@ class messageController extends Controller
                 $messageid = $message->id;
             }else {
                 message::where('user_id',$id)->update(['is_seen' => 0]);
-                $messageid = message::where('user_id',$u)->value('id');
+                $messageid = message::where('user_id',$id)->value('id');
 
             }
         messageTemplate::create([
