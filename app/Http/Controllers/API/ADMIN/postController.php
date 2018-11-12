@@ -37,4 +37,13 @@ class postController extends Controller
             return response()->json(['image'=> $fileName],200);
         }
     }
+
+    public function update(Request $req, $id)
+    {
+        post::where('id',$id)->update(['content' => $req->post]);
+    }
+    // public function show($id) 
+    // {
+    //     return response()->json(post::where('id',$id)->firstOrFail());
+    // }
 }

@@ -122,6 +122,9 @@ Route::get('/admin/user/posts/{id}','API\ADMIN\userController@posts');
 Route::post('/admin/user/name','API\ADMIN\searchController@searchUser_byName');
 Route::post('/admin/user/country','API\ADMIN\searchController@searchUser_byCountry');
 Route::post('/admin/user/catg','API\ADMIN\searchController@searchUser_byCatg');
+Route::post('/admin/user/update/{id}','API\ADMIN\userController@update');
+Route::post('/admin/user/update/image/{id}','API\ADMIN\userController@updateImage');
+Route::get('/admin/user/destroy/{id}','API\ADMIN\userController@destroy');
 /// post 
 route::get('/admin/post/destroy/{id}','API\ADMIN\postController@destory');
 Route::post('/admin/post/name','API\ADMIN\searchController@searchPost_byName');
@@ -140,6 +143,8 @@ Route::get('/admin/faker/getUser','API\ADMIN\fakerController@getFakerUser');
 Route::get('/admin/dashboard','API\ADMIN\userController@dashboard');
 
 Route::get('/admin/post/index','API\ADMIN\postController@index');
+Route::post('/admin/post/update/{id}','API\ADMIN\postController@update');
+// Route::get('/admin/post/show/{id}','API\ADMIN\postController@show');
 
 
 Route::post('/admin/message/store','API\ADMIN\messageController@publicMessage');

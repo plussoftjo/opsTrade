@@ -55,7 +55,7 @@ class userController extends Controller
 
     }
 
-        public function login() {
+    public function login() {
         if(Auth::attempt(['phone' => request('phone'), 'password' => request('password')])){ 
             $user = Auth::User(); 
             $success['token'] =  $user->createToken('tfran')-> accessToken; 
@@ -95,7 +95,7 @@ class userController extends Controller
     }
 
     public function uploadImage(Request $request) {
- $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
         'image' => 'required|image64:jpeg,jpg,png'
          ]);
          if ($validator->fails()) {

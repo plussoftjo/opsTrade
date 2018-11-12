@@ -39,6 +39,12 @@
 							@click="$router.push({name:'message',params:{id:$route.params.id}})">
 								Send Message
 							</button>
+							<button class="btn btn-primary" @click="$router.push({name:'editUser',params:{id:$route.params.id}})">Edit</button>
+							<button class="btn btn-danger" @click="destroy_user(user.id)">Delete</button>
+							<button class="btn btn-warning" @click="focs">Change Image</button>
+							<div class="inputF">
+								 <input type="file" v-on:change="onFileChange" class="form-control" ref="image">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -81,7 +87,8 @@
 		data() {
 			return {
 				user:{},
-				posts:[]
+				posts:[],
+				image:''
 			}
 		},
 		methods:{
@@ -110,7 +117,42 @@
 				}).catch(err => {
 					console.log(err)
 				});
-			}
+			},
+			destroy_user(id) {
+				const vm = this;
+				confirm('Do you Want Delete ?') && axios.get('api/admin/user/destroy/' + id ).then(response => {
+					vm.$router.push({name:'Users'})
+				}).catch(err => {
+					console.log(err)
+				});
+			},
+			focs() {
+				const vm = this;
+				vm.$refs.image.click();
+			},
+			onFileChange(e) {
+		        let files = e.target.files || e.dataTransfer.files;
+		         if (!files.length)
+		            return;
+		        this.createImage(files[0]);
+		      },
+		      createImage(file) {
+		         let reader = new FileReader();
+		          let vm = this;
+		          reader.onload = (e) => {
+		              vm.image = e.target.result;
+		              vm.upload();
+		          };
+		          reader.readAsDataURL(file);
+		      },
+		      upload() {
+		      	const vm = this;
+		      	axios.post('/api/admin/user/update/image/' + vm.user.id,{image:vm.image}).then(response => {
+		      		vm.user.avatar = response.data.image;
+		      	}).catch(err => {
+		      		console.log()
+		      	});
+		      },
 		},
 		created() {
 			const vm = this;
@@ -122,4 +164,8 @@
 	.d-flex img{display: inline-block;}
 	.deleteBtn{position: absolute; top:0px; right: 0px;}
 	.sendMessage{position: absolute; right: 30px; bottom: 30px;}
+	  .inputF {
+        position: absolute;
+        left: -99999px;
+  		  }	
 </style>

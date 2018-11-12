@@ -10,6 +10,8 @@ import fakerPost from './components/app/fakerPost'
 import messages from './components/app/messages'
 import getMessage from './components/app/getMessage'
 import message from './components/app/message'
+import editPost from './components/app/editPost'
+import editUser from './components/app/editUser'
 
 export const routes = [
 	{
@@ -71,5 +73,15 @@ export const routes = [
 		path:'/message/:id',
 		name:'message',
 		component:message
+	},
+	{
+		path:'/post/edit/:id',
+		name:'editPost',
+		component:editPost
+	},
+	{
+		path:'/user/edit/:id',
+		name:'editUser',
+		component:editUser
 	}
 ]

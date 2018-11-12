@@ -9,6 +9,10 @@
 					<div class="col-md-9">
 						<div class="title">{{post.user.name}}</div>
 						<div class="title">{{post.created_at}}</div>
+						<div>
+							<button class="btn btn-primary" @click="$router.push({name:'editPost',params:{id:post.id}})">Edit</button>
+							<button class="btn btn-danger" @click="destroy(post.id)">Remove</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -66,6 +70,14 @@
 				const vm = this;
 				axios.get('/api/admin/post/show/' + vm.$route.params.id).then(response => {
 					vm.post = response.data;
+				}).catch(err => {
+					console.log(err)
+				});
+			},
+			destroy(id) {
+				const vm = this;
+				confirm('Do you Want Delete ?') && axios.get('api/admin/post/destroy/' + id ).then(response => {
+					vm.$router.push({name:'posts'})
 				}).catch(err => {
 					console.log(err)
 				});
