@@ -56,7 +56,8 @@ class shareNotfy extends Notification
             'id' => $this->post_id,
             'name' => $this->user->name,
             'message' => $this->user->name.' Has Like Your Post',
-            'image' => $this->user->avatar
+            'image' => $this->user->avatar,
+            'type' => 'post'
         ];
     }
 }

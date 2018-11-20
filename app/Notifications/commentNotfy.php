@@ -49,7 +49,8 @@ class commentNotfy extends Notification
             'name' => $this->user->name,
             'message' => $this->user->name.' Has Comment in Your Post' ,
             'id' => $this->post_id,
-            'image' => $this->user->avatar
+            'image' => $this->user->avatar,
+            'type' => 'post'
         ];
     }
 }

@@ -60,7 +60,8 @@ class frindship extends Notification
             'name' => $this->user->name,
             'message' => $this->user->name . ' Send Frined requrest',
             'id' => $this->user->id,
-            'image' => $this->user->avatar
+            'image' => $this->user->avatar,
+            'type' => 'profile'
 
         ];
     }

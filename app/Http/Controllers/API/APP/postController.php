@@ -38,7 +38,7 @@ class postController extends Controller
 
 	    $frinds_id = Auth::User()->frinds_id();
 	    foreach ($frinds_id as $k) {
-        User::find($k)->notify(new \App\Notifications\postNotfy(Auth::User()));
+        User::find($k)->notify(new \App\Notifications\postNotfy(Auth::User(),$create->id));
 	    	
 	    }
 	}
@@ -65,16 +65,41 @@ class postController extends Controller
         if ($validator->fails()) { 
             return response()->json(['error'=>$validator->errors()], 401);            
         }else {
-        	post::create([
+        	 $create = post::create([
 			'user_id' => Auth::id(),
 			'content' => $req->content,
 			'catg' => Auth::User()->profile->catg
 		]);
 		User::where('id',Auth::id())->update(['active' => true]);
-        }
 
-		
-		
+			   if($req->hasImage)
+				   {
+				   	foreach ($req->images as $k) {
+				   		postimage::create([
+				   			'post_id' => $create->id,
+				   			'image' => $k['name']
+				   		]);
+				   	}
+				   }
+        }
+	}
+
+	public function deletePost($id)
+	{
+		post::where('id',$id)->delete();
+		postimage::where('post_id',$id)->delete();
+		like::where('post_id',$id)->delete();
+		comment::where('post_id',$id)->delete();
+	}
+
+	public function deleteImage($id)
+	{
+		return postimage::where('id',$id)->delete();
+	}
+
+	public function updatePost($id,Request $req)
+	{
+		return post::where('id',$id)->update(['content' => $req->content]);
 	}
 
 	public function myComment($post_id) 
@@ -152,7 +177,7 @@ class postController extends Controller
         } else {
             $imageData = $request->get('image');
             $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($imageData, 0, strpos($imageData, ';')))[1])[1];
-            Image::make($request->get('image'))->save(public_path('images/posts/').$fileName);
+            Image::make($request->get('image'))->resize(650,750)->save(public_path('images/posts/').$fileName);
             return response()->json(['image'=> $fileName],200);
         }
 	}

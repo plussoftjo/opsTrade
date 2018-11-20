@@ -10,7 +10,9 @@ class notfyController extends Controller
 {
     public function getAll()
     {
-    	return response()->json(Auth::User()->unreadNotifications);
+        $read = Auth::User()->notifications;
+        $UnRead = Auth::User()->unreadNotifications;
+    	return response()->json(['read' => $read,'UnRead' => $UnRead]);
     }
 
     public function make_as_read() {

@@ -39,13 +39,23 @@ class likeController extends Controller
     public function isLiked($id)
     {
     	$post = post::find($id);
-    	if(like::where('user_id',Auth::id())->where('post_id',$id)->count() == 0)
-    	{
-    		return response()->json(['isLiked' => false]);
-    	}
-    	else {
-    		return response()->json(['isLiked' => true]);
-    	}
+        if($post->user_id == Auth::id())
+        {
+            $owner = true;
+        }
+        else 
+        {
+            $owner = false;
+        }
+        if(like::where('user_id',Auth::id())->where('post_id',$id)->count() == 0)
+        {
+            $isLiked = false;
+        }
+        else {
+            $isLiked = true;
+        }
+    	
+    		return response()->json(['isLiked' => $isLiked,'owner' => $owner]);
     } 
     
 }

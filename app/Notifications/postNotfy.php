@@ -12,15 +12,17 @@ class postNotfy extends Notification
     use Queueable;
 
     public $user;
+    public $post_id;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user,$post_id)
     {
         $this->user = $user;
+        $this->post_id = $post_id;
     }
 
     /**
@@ -46,8 +48,9 @@ class postNotfy extends Notification
         return [
             'name' => $this->user->name,
             'message' => $this->user->name.' Share New Post ',
-            'id' => $this->user->id,
-            'image' => $this->user->avatar
+            'id' => $this->post_id,
+            'image' => $this->user->avatar,
+            'type' => 'post'
         ];
     }
 }

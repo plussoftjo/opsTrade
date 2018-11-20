@@ -56,7 +56,8 @@ class replayNotfy extends Notification
             'id' => $this->comment_id,
             'name' => $this->user->name,
             'message' => $this->user->name.' Has Replay To Your Comment',
-            'image' => $this->user->avatar
+            'image' => $this->user->avatar,
+            'type' => 'comment'
         ];
     }
 }

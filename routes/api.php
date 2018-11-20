@@ -48,6 +48,9 @@ Route::get('/post/like/{id}', 'API\APP\likeController@makeLike');
 Route::get('/post/unlike/{id}','API\APP\likeController@unLike');
 Route::get('/post/isLiked/{id}','API\APP\likeController@isLiked');
 
+Route::get('/post/deleteImage/{id}','API\APP\postController@deleteImage');
+Route::post('/post/updatePost/{id}','API\APP\postController@updatePost');
+Route::get('/post/deletePost/{id}','API\APP\postController@deletePost');
 /////////////////
 /// POST ROUTE 
 //////////

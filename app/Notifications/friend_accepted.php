@@ -60,7 +60,8 @@ class friend_accepted extends Notification
             'name' => $this->user->name,
             'message' => $this->user->name. ' Accept You Freind Request',
             'id' => $this->user->id,
-            'image' => $this->user->avatar
+            'image' => $this->user->avatar,
+            'type' => 'profile'
         ];
     }
 }
